@@ -1,3 +1,4 @@
+import constants.Constants;
 import lombok.experimental.UtilityClass;
 
 import java.util.HashMap;
@@ -8,14 +9,13 @@ public class Encoder {
     private final Map<Integer, Character> BINARY_TO_CHAR_MAP = buildBinaryToCharMap();
     public String toEncodedString(final Long number) {
         String binary = Long.toBinaryString(number);
-        System.out.println(binary);
 
-        int padding = (6 - binary.length() % 6) % 6;
+        final int padding = (Constants.BINARY_ENCODED_LENGTH - binary.length() % Constants.BINARY_ENCODED_LENGTH) % Constants.BINARY_ENCODED_LENGTH;
         binary = "0".repeat(padding) + binary;
 
         StringBuilder encoded = new StringBuilder();
-        for (int i = 0; i < binary.length(); i += 6) {
-            final String chunk = binary.substring(i, i + 6);
+        for (int i = 0; i < binary.length(); i += Constants.BINARY_ENCODED_LENGTH) {
+            final String chunk = binary.substring(i, i + Constants.BINARY_ENCODED_LENGTH);
             int value = Integer.parseInt(chunk, 2);
             final Character mappedChar = BINARY_TO_CHAR_MAP.get(value);
             if (mappedChar != null) {
