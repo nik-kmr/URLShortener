@@ -1,8 +1,8 @@
-package helper;
+package com.urlshortener.helper;
 
 import com.google.inject.Inject;
-import constants.DatabaseConstants.ShortURLTable;
-import constants.DatabaseConstants.CountersTable;
+import com.urlshortener.constants.DatabaseConstants.ShortURLTable;
+import com.urlshortener.constants.DatabaseConstants.CountersTable;
 import lombok.AllArgsConstructor;
 
 import javax.sql.DataSource;

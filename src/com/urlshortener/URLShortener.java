@@ -1,9 +1,11 @@
+package com.urlshortener;
+
 import com.google.inject.Guice;
 import com.google.inject.Injector;
 import com.google.inject.Stage;
 import io.javalin.Javalin;
-import module.DataBaseModule;
-import module.ServiceModule;
+import com.urlshortener.module.DataBaseModule;
+import com.urlshortener.module.ServiceModule;
 import org.apache.logging.log4j.LogManager;
 
 public class URLShortener {

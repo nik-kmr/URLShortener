@@ -1,7 +1,9 @@
+package com.urlshortener;
+
 import com.google.inject.Inject;
-import constants.Constants;
-import handler.RedirectURLHandler;
-import handler.ShortenUrlHandler;
+import com.urlshortener.constants.Constants;
+import com.urlshortener.handler.RedirectURLHandler;
+import com.urlshortener.handler.ShortenUrlHandler;
 import io.javalin.Javalin;
 import lombok.AllArgsConstructor;
 

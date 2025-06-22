@@ -1,15 +1,15 @@
-package handler;
+package com.urlshortener.handler;
 
 import com.google.inject.Inject;
-import constants.Constants;
-import helper.DatabaseHelper;
+import com.urlshortener.constants.Constants;
+import com.urlshortener.helper.DatabaseHelper;
 import io.javalin.http.Context;
 import io.javalin.http.Handler;
 import lombok.AllArgsConstructor;
 import lombok.NonNull;
-import model.ShortenURLRequest;
-import model.ShortenURLResponse;
-import util.Encoder;
+import com.urlshortener.model.ShortenURLRequest;
+import com.urlshortener.model.ShortenURLResponse;
+import com.urlshortener.util.Encoder;
 
 import java.util.Random;
 

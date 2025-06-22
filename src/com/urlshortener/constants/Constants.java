@@ -1,4 +1,4 @@
-package constants;
+package com.urlshortener.constants;
 
 public class Constants {
     // a to z = 26, 0 to 9 = 10, A to Z = 26

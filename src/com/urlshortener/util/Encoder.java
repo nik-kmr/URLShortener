@@ -1,6 +1,6 @@
-package util;
+package com.urlshortener.util;
 
-import constants.Constants;
+import com.urlshortener.constants.Constants;
 import lombok.experimental.UtilityClass;
 
 import java.util.HashMap;

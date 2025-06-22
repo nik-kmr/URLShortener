@@ -1,4 +1,4 @@
-package module;
+package com.urlshortener.module;
 
 import com.google.inject.AbstractModule;
 import com.zaxxer.hikari.HikariConfig;

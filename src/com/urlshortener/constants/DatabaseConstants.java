@@ -1,4 +1,4 @@
-package constants;
+package com.urlshortener.constants;
 
 public class DatabaseConstants {
     public static class CountersTable {

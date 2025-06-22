@@ -1,11 +1,11 @@
-package module;
+package com.urlshortener.module;
 
 import com.google.inject.AbstractModule;
 import com.google.inject.Provides;
 import com.google.inject.Singleton;
-import handler.RedirectURLHandler;
-import handler.ShortenUrlHandler;
-import helper.DatabaseHelper;
+import com.urlshortener.handler.RedirectURLHandler;
+import com.urlshortener.handler.ShortenUrlHandler;
+import com.urlshortener.helper.DatabaseHelper;
 import io.javalin.Javalin;
 import io.javalin.json.JavalinJackson;
 
