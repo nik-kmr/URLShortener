@@ -25,7 +25,8 @@ public class ShortenUrlHandler implements Handler {
         final long currentNumber = databaseHelper.getAndIncrement(getRandomNumber());
         final String encodedString = Encoder.toEncodedString(currentNumber);
         databaseHelper.saveShortenURL(url, encodedString);
-        context.json(ShortenURLResponse.builder().shortenURL("").build());
+        final String domain = context.url().replace(context.path(), "");
+        context.json(ShortenURLResponse.builder().shortenURL(domain + "/" + encodedString).build());
     }
 
     private int getRandomNumber() {

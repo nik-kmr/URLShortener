@@ -31,7 +31,7 @@ public class URLShortener {
             LogManager.shutdown();
         }));
 
-        int port = Integer.parseInt(System.getenv().getOrDefault("PORT", "8080"));
+        final int port = Integer.parseInt(System.getenv().getOrDefault("PORT", "8080"));
         server.start(port);
         // Keeps JVM running
         Thread.currentThread().join();
