@@ -1,4 +1,7 @@
+package helper;
+
 import com.google.inject.Inject;
+import constants.DatabaseConstants.ShortURLTable;
 import constants.DatabaseConstants.CountersTable;
 import lombok.AllArgsConstructor;
 
@@ -9,7 +12,7 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 
 @AllArgsConstructor(onConstructor_ = {@Inject})
-public class Counter {
+public class DatabaseHelper {
     private final DataSource dataSource;
 
     public long getAndIncrement(final int id) throws SQLException {
@@ -51,6 +54,21 @@ public class Counter {
                 conn.rollback();
                 throw e;
             }
+        }
+    }
+
+    public void saveShortenURL(final String url, final String shortURL) {
+        try (Connection conn = dataSource.getConnection();
+             final PreparedStatement stmt = conn.prepareStatement(String.format(
+                     "INSERT INTO %s (original_url, short_url) VALUES (?, ?)",
+                     ShortURLTable.TABLE_NAME
+             ))) {
+
+            stmt.setString(1, url);
+            stmt.setString(2, shortURL);
+            stmt.executeUpdate();
+        } catch (SQLException e) {
+            throw new RuntimeException("Failed to save shortened URL", e);
         }
     }
 }
