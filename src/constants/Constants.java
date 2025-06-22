@@ -5,4 +5,5 @@ public class Constants {
     // Total = 62 ~ 2^6
     public static int BINARY_ENCODED_LENGTH = 6;
     public static int TOTAL_IDS = 10;
+    public static String SHORTEN_URL_PATH_PARAM = "shortenURL";
 }

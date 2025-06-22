@@ -3,6 +3,7 @@ package module;
 import com.google.inject.AbstractModule;
 import com.google.inject.Provides;
 import com.google.inject.Singleton;
+import handler.RedirectURLHandler;
 import handler.ShortenUrlHandler;
 import helper.DatabaseHelper;
 import io.javalin.Javalin;
@@ -31,5 +32,11 @@ public class ServiceModule extends AbstractModule {
     @Singleton
     public ShortenUrlHandler provideShortenUrlHandler(final DatabaseHelper databaseHelper) {
         return new ShortenUrlHandler(databaseHelper);
+    }
+
+    @Provides
+    @Singleton
+    public RedirectURLHandler provideRedirectURLHandler(final DatabaseHelper databaseHelper) {
+        return new RedirectURLHandler(databaseHelper);
     }
 }

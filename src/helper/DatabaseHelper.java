@@ -71,4 +71,23 @@ public class DatabaseHelper {
             throw new RuntimeException("Failed to save shortened URL", e);
         }
     }
+
+    public String getOriginalUrl(final String shortURL) {
+        try (Connection conn = dataSource.getConnection();
+             final PreparedStatement stmt = conn.prepareStatement(String.format(
+                     "SELECT original_url FROM %s WHERE short_url = ?",
+                     ShortURLTable.TABLE_NAME
+             ))) {
+
+            stmt.setString(1, shortURL);
+            final ResultSet rs = stmt.executeQuery();
+            if (rs.next()) {
+                return rs.getString(ShortURLTable.FIELD_ORIGINAL_URL);
+            } else {
+                throw new RuntimeException("Short URL not found: " + shortURL);
+            }
+        } catch (SQLException e) {
+            throw new RuntimeException("Failed to get original URL", e);
+        }
+    }
 }
