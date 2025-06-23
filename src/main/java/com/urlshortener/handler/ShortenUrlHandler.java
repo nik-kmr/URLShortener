@@ -25,11 +25,19 @@ public class ShortenUrlHandler implements Handler {
         final long currentNumber = databaseHelper.getAndIncrement(getRandomNumber());
         final String encodedString = Encoder.toEncodedString(currentNumber);
         databaseHelper.saveShortenURL(url, encodedString);
-        final String domain = context.url().replace(context.path(), "");
-        context.json(ShortenURLResponse.builder().shortenURL(domain + "/" + encodedString).build());
+        context.json(getShortenURLResponse(context, encodedString));
     }
 
     private int getRandomNumber() {
         return new Random().nextInt(Constants.TOTAL_IDS);
+    }
+
+    private ShortenURLResponse getShortenURLResponse(final Context context, final String encodedString) {
+        String scheme = context.header("X-Forwarded-Proto");
+        final String domain = context.host();
+        String shortUrl = scheme + "://" + domain + "/" + encodedString;
+        return ShortenURLResponse.builder()
+                .shortenURL(shortUrl)
+                .build();
     }
 }
